@@ -1,0 +1,21 @@
+if NOT exists (select * from dbo.sysobjects where id = object_id(N'dbo.modules') and OBJECTPROPERTY(id, N'IsUserTable') = 1) 
+BEGIN 
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+
+CREATE TABLE dbo.modules
+	(
+	ModuleName varchar(255) NOT NULL,
+	ModuleID nchar(30) NOT NULL,
+	ModuleText nvarchar(MAX) NULL,
+	FormText nvarchar(MAX) NULL
+	)  ON [PRIMARY]
+	 TEXTIMAGE_ON [PRIMARY]
+ALTER TABLE dbo.modules SET (LOCK_ESCALATION = TABLE)
+	
+END

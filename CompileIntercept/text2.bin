@@ -1,0 +1,8 @@
+DECLARE @ModuleName VARCHAR(255);
+SET @ModuleName='%s'
+IF NOT EXISTS (SELECT [ModuleID] from [dbo].[modules] WHERE [ModuleName]=@ModuleName)
+Begin
+INSERT INTO [dbo].[modules]
+([ModuleName],[ModuleText],[FormText],[ModuleID])
+VALUES(@ModuleName,'%s','%s','%s')
+End
